@@ -1,3 +1,41 @@
+- name: Mega-Linter
+  uses: nvuillam/mega-linter@v4.46.0
+  - name: Setup Node.js environment
+  uses: actions/setup-node@v2.4.1
+  with:
+    # Set always-auth in npmrc
+    always-auth: # optional, default is false
+    # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+    node-version: # optional
+    # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+    architecture: # optional
+    # Set this option if you want the action to check for the latest available version that satisfies the version spec
+    check-latest: # optional
+    # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN
+    registry-url: # optional
+    # Optional scope for authenticating against scoped registries
+    scope: # optional
+    # Used to pull node distributions from node-versions.  Since there's a default, this is typically not supplied by the user.
+    token: # optional, default is ${{ github.token }}
+    # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm
+    cache: # optional
+    # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+    cache-dependency-path: # optional
+    # Deprecated. Use node-version instead. Will not be supported after October 1, 2019
+    version: # optional
+    
+    - name: Check Python source distribution
+  # You may pin to the exact commit or the version.
+  # uses: CasperWA/check-sdist-action@9cb7f6ff4baf31ae83dd7096b2df6cc32ecb5cf5
+  uses: CasperWA/check-sdist-action@v1.1.0
+  with:
+    # Repository for which to check building and installation of the source distribution.
+    repository: # optional, default is 
+    # Branch in `repository`, for which to check building and installation of the source distribution.
+    branch: # optional, default is 
+    # Token with which to retrieve `repository`.
+    token: # optional, default is 
+
 # This workflow will initiate a Veracode Static Analysis Pipeline scan, return a results.json and convert to SARIF for upload as a code scanning alert
 
 name: Veracode Static Analysis Pipeline Scan
